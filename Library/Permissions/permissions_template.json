@@ -1,0 +1,31 @@
+{
+  "Member": {
+    "Permissions": [
+      "member.perm1", 
+      "member.perm2", 
+      "member.perm3"
+    ],
+    "InheritedGroups": [
+      "Guest"
+    ]
+  }, 
+  "Admin": {
+    "Permissions": [
+      "admin.perm1", 
+      "admin.perm2", 
+      "admin.perm3"
+    ],
+    "InheritedGroups": [
+      "Member"
+    ]
+  }, 
+  "Guest": {
+    "Permissions": [
+      "guest.perm1", 
+      "guest.perm2", 
+      "guest.perm3"
+    ],
+    "InheritedGroups": [
+    ]
+  }
+}
