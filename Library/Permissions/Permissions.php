@@ -8,7 +8,7 @@ class Permissions {
     private $groups = [];
 
     public function __construct() {
-        $jsonString;
+        $jsonString = '';
 
         if (file_exists($this->permissionsFilepath)) {
             $jsonString = file_get_contents($this->permissionsFilepath);
