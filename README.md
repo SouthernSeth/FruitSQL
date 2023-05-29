@@ -24,3 +24,6 @@ You can also directly access the MySqli object by calling
 ```
 $fruitsql->GetMysqli()
 ```
+
+### Project Status
+This project is currently being developed and is a WIP. The library might have bugs and spaghetti code. 
