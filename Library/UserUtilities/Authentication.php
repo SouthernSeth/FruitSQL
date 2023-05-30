@@ -19,7 +19,7 @@ class Authentication {
 
     public function HashPassword($rawPassword) {
         $options = [
-            'cost' => $bcryptHashCost,
+            'cost' => $this->bcryptHashCost,
         ];
 
         $hashedPassword = password_hash($rawPassword, PASSWORD_BCRYPT, $options);

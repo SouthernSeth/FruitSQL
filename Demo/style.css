@@ -1,0 +1,45 @@
+@font-face {
+    font-family: SFPro;
+    src: url(SF-Pro.ttf);
+  }
+
+html {
+    font-family: SFPro;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 0.5em;
+}
+
+table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    background-color: rgb(77, 77, 77) !important;
+    color: white !important;
+}
+
+tr {
+}
+
+tr:nth-child(odd) {
+    background-color: lightgray;
+}
+tr:nth-child(even) {
+    background-color: white;
+}
+
+.tablecontainer {
+    width: 75%;
+    background-color: rgb(166, 166, 255);
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    border: 3px solid black;
+}
