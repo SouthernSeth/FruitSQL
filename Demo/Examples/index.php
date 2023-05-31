@@ -1,17 +1,12 @@
 <?php
 
-include '../Library/FruitSQL_Init.php';
+include '../../Library/FruitSQL_Init.php';
 
 function PrintUserTable() {
     $fruitsql = new FruitSQL();
     $userdata = new UserData($fruitsql, 'users');
 
     $createdTable = $userdata->CreateUserTable();
-    if ($createdTable) {
-        echo '<div style="text-align: center; width: 100%;">User table was created</div>';
-    } else {
-        echo '<div style="text-align: center; width: 100%;">User table was not created. Does it already exist?</div>';
-    }
 
     $result = $fruitsql->Query("SELECT * FROM users");
 
@@ -69,6 +64,14 @@ function UpdateUserPassword() {
     $userdata->SetUserPassword(1, 'mypassword');
 }
 
+function PrintUserEmail() {
+    $fruitsql = new FruitSQL();
+    $auth = new Authentication($fruitsql, 'users', 12);
+    $userObj = $auth->GetUserObject(1);
+    
+    echo $userObj->GetEmail();
+}
+
 ?>
 
 <html>
@@ -79,8 +82,8 @@ function UpdateUserPassword() {
 
 <body>
     <?php
-        UpdateUserPassword();
         PrintUserTable();
+        PrintUserEmail();
     ?>
 </body>
 

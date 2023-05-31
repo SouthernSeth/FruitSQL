@@ -1,6 +1,6 @@
 @font-face {
     font-family: SFPro;
-    src: url(SF-Pro.ttf);
+    src: url(../Fonts/SF-Pro.ttf);
   }
 
 html {
@@ -22,9 +22,6 @@ table {
 th {
     background-color: rgb(77, 77, 77) !important;
     color: white !important;
-}
-
-tr {
 }
 
 tr:nth-child(odd) {

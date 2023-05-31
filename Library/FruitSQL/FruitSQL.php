@@ -9,6 +9,8 @@ class FruitSql {
     private $mysqli;
 
     public function __construct() {
+        include ('../Settings/SqlSettings.php');
+
         $this->fruitsqlsettings = new FruitSqlSettings();
         $this->Connect($this->fruitsqlsettings);
     }
@@ -67,6 +69,22 @@ class FruitSql {
         }
 
         return $this->mysqli;
+    }
+
+    public function CreateTables() {
+        if (!$this->IsConnected()) {
+            $this->Connect($this->fruitsqlsettings);
+        }
+
+        include '../Settings/SqlTables.php';
+        $tables = GetTablesArray();
+        $tablesConcat = '';
+
+        foreach ($tables as $table) {
+            $tablesConcat .= $table;
+        }
+
+        $this->mysqli->query($tablesConcat);
     }
 }
 

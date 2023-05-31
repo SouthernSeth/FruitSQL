@@ -4,7 +4,30 @@ class User {
     private $id;
     private $email;
     private $username;
-    private $permissions;
+    private $permissiongroup;
+
+    public function __construct($id, $email, $username, $permissiongroup) {
+        $this->id = $id;
+        $this->email = $email;
+        $this->username = $username;
+        $this->permissiongroup = $permissiongroup;
+    }
+
+    public function GetID() {
+        return $this->id;
+    }
+
+    public function GetEmail() {
+        return $this->email;
+    }
+
+    public function GetUsername() {
+        return $this->username;
+    }
+
+    public function GetPermissionGroup() {
+        return $this->permissiongroup;
+    }
 }
 
 class UserData {
@@ -30,14 +53,8 @@ class UserData {
         return $result;
     }
 
-    public function CreateUserTable() {
-        $statement = "CREATE TABLE IF NOT EXISTS $this->userTable (ID INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Email VARCHAR(255) NOT NULL, Username VARCHAR(255) NOT NULL, HashedPassword VARCHAR(255) NOT NULL, PermissionGroup VARCHAR(255) NOT NULL, AccountCreationTimestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, LastLoginTimestamp TIMESTAMP NULL)";
-        $result = $this->fruitsql->Query($statement);
-        return $result;
-    }
-
     public function SetUserPassword($id, $rawPassword) {
-        $auth = new Authentication($this->fruitsql, 12);
+        $auth = new Authentication($this->fruitsql, $this->userTable, 12);
         $hashedPassword = $auth->HashPassword($rawPassword);
         $statement = "UPDATE $this->userTable SET HashedPassword=? WHERE ID=?";
         $result = $this->fruitsql->PreparedStatement($statement, 'si', $hashedPassword, $id);
