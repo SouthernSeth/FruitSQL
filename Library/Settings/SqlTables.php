@@ -53,26 +53,41 @@ END;
 $ForumCategories <<<END
 CREATE TABLE ForumCategories (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    category VARCHAR(64) NOT NULL
+    category VARCHAR(64) NOT NULL,
+    categorydescription VARCHAR(64) NOT NULL
 );
 END;
 // array_push($tables, $ForumCategories);
 
 // Defines the 'ForumThreads' for storing a Forum's threads
 $ForumThreads <<<END
-
+CREATE TABLE ForumThreads (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(64) NOT NULL,
+    threadtitle VARCHAR(64) NOT NULL,
+    threaddescription VARCHAR(64) NOT NULL
+);
 END;
 // array_push($tables, $ForumThreads);
 
 // Defines the 'ForumPosts' for storing a Forum's posts
 $ForumPosts <<<END
-
+CREATE TABLE ForumPosts (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    threadtitle VARCHAR(64) NOT NULL,
+    posttitle VARCHAR(300) NOT NULL,
+    posttext VARCHAR(300) NOT NULL
+);
 END;
 // array_push($tables, $ForumPosts);
 
 // Defines the 'ForumPostReplies' for storing a Forum's replies on posts
 $ForumPostsReplies <<<END
-
+CREATE TABLE ForumPostReplies (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    posttitle VARCHAR(64) NOT NULL,
+    reply VARCHAR(64) NOT NULL
+);
 END;
 // array_push($tables, $ForumPostsReplies);
 
@@ -94,7 +109,10 @@ END;
 // array_push($tables, $StoreInventory);
 
 $Sales <<<END
-
+CREATE TABLE Sales (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    invoiceid VARCHAR(320) NOT NULL
+);
 END;
 // array_push($tables, $Sales);
 
@@ -123,6 +141,16 @@ END;
 
 function GetTablesArray() {
     return $tables;
+}
+
+function GetTablesQuery() {
+    $query = '';
+    
+    foreach ($tables as $table) {
+        $query .= $table;
+    }
+
+    return $query;
 }
 
 ?>

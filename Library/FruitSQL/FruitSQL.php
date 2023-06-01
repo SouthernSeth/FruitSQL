@@ -77,14 +77,9 @@ class FruitSql {
         }
 
         include '../Settings/SqlTables.php';
-        $tables = GetTablesArray();
-        $tablesConcat = '';
+        $tables = GetTablesQuery();
 
-        foreach ($tables as $table) {
-            $tablesConcat .= $table;
-        }
-
-        $this->mysqli->query($tablesConcat);
+        $this->mysqli->query($tables);
     }
 }
 
